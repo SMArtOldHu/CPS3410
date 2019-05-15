@@ -18,7 +18,7 @@ public class MyPriorityQueue {
 	
 	void insert( double priority) 
 	{
-		if(size==(queue.length-1)) //if size is too big
+		if(size==(queue.length-1)) //if size is too big, Check whether array need to be expended;
 		{
 			double[]tempQueue=new double[queue.length*2+1];
 			for(int i=0;i<queue.length;i++)
@@ -29,8 +29,9 @@ public class MyPriorityQueue {
 
 		}
 		
-		//use Buble sort
+		//Insert value at bottom of array;
 		queue[size]=priority;
+		//Use bubble sort to shift forward;
 		for(int i=size;i>0;i--)
 		{
 			if(queue[i]<queue[i-1])
@@ -55,29 +56,35 @@ public class MyPriorityQueue {
 		return size==0;
 	}
 	//findMin
-	double findMin()
+	double findMin() throws EmptyPQException
 	{
+		if(size <= 0){//Check Empty;
+			throw new EmptyPQException("delete from an empty queue!!!");
+		}
 		return queue[0];
 	}
 	//deleteMin
 	double deleteMin ()throws EmptyPQException 
 	{
-		double temp=queue[0];
-		for(int i=0;i<size-1;i++)
+		if(size <= 0){//Check Empty;
+			throw new EmptyPQException("delete from an empty queue!!!");
+		}
+		double temp=queue[0];//Save queue[0]
+		for(int i=0;i<size-1;i++)//Shift queue to queue[size-1];
 		{
 			queue[i]=queue[i+1];
 		}
-		queue[size]=0;
+		queue[size]=0;//Clear the last one
 		size--;
 		return temp;
 	}
-	
+	//print out the queue
 	void printPQ()
 	{
 		System.out.print("MyPQ is: ");
 		for(int i=0;i<size;i++)
 		{
-			System.out.print(queue[i]+" ");
+			System.out.println(queue[i]+" ");
 			
 		}
 	}
