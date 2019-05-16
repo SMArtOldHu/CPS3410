@@ -58,7 +58,7 @@ public class MyPriorityQueueV1 {
 	// adjust heap to minimum heap
 	private void adjustHeap(double[] queue, int start, int end){
 		double tmp = queue[start];
-		for(int i = 2 * start; i <= end; i++){
+		for(int i = 2 * start; i <= end; i = i * 2){
 			if(i < end && queue[i] > queue[i + 1]){
 				i++;
 			}
@@ -72,7 +72,7 @@ public class MyPriorityQueueV1 {
 	}
 	// build minimum heap
 	private void buildHeap(double[] queue, int size){
-		for(int i = size / 2; i > 0; i--){
+		for(int i = size / 2; i > 0; i /= 2){
 			adjustHeap(queue, i, size);
 		}
 	}

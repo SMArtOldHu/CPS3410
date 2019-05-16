@@ -5,7 +5,7 @@ public class TestMyPQ {
 	public static void main(String[] args) {
 		MyPriorityQueue pq=new MyPriorityQueue();
 		
-		int testNum=10000;
+		int testNum=100000;
 		long insertStartTime=System.currentTimeMillis();
 		for(int i=0;i<testNum;i++)
 		{
@@ -36,7 +36,7 @@ public class TestMyPQ {
 		}
 		long insertEndTimev1=System.currentTimeMillis();
 		System.out.println("When insert"+testNum+", pqv1 take:"+(insertEndTimev1-insertStartTimev1)+"ms");
-		
+		//pqv1.print();
 		
 		try{
 			long deleteStartTimev1=System.currentTimeMillis();
@@ -49,7 +49,15 @@ public class TestMyPQ {
 		}catch(EmptyPQException e){
 			e.printStackTrace();
 		}
-		
+		/*try{
+			for(int i=0;i<testNum;i++)
+			{
+				System.out.println(pqv1.deleteMin());
+			}
+		}catch(EmptyPQException e){
+			e.printStackTrace();
+		}
+		pqv1.print();*/
 	}
 
 }
